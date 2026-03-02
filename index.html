@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leul Demesew</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========================= GLOBAL RESET ========================= */
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:#0b0f1a;color:white;overflow-x:hidden;line-height:1.6;}
+
+/* ========================= BACKGROUND ========================= */
+.bg-grid{
+  position:fixed;width:100%;height:100%;
+  background-image:linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:50px 50px;z-index:-3;
+}
+.glow-orb{
+  position:absolute;border-radius:50%;filter:blur(100px);
+  z-index:-2;animation:orbMove 20s infinite alternate;
+}
+.orb1{width:250px;height:250px;background:#00f0ff;top:10%;left:5%;}
+.orb2{width:200px;height:200px;background:#ff00f7;bottom:10%;right:5%;}
+@keyframes orbMove{
+  0%{transform:translate(0,0);}
+  50%{transform:translate(30px,-30px);}
+  100%{transform:translate(-20px,20px);}
+}
+
+/* ========================= NAVBAR ========================= */
+header{
+  position:fixed;width:100%;backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.08);z-index:1000;
+}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 8%;}
+.logo{font-size:1.8rem;font-weight:700;background:linear-gradient(90deg,#00f0ff,#ff00f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+nav ul{display:flex;list-style:none;gap:30px;}
+nav ul li a{color:white;text-decoration:none;position:relative;font-weight:500;}
+nav ul li a::after{content:"";position:absolute;left:0;bottom:-6px;width:0%;height:2px;background:linear-gradient(90deg,#00f0ff,#ff00f7);transition:.4s;}
+nav ul li a:hover::after{width:100%;}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:6px;}
+.hamburger span{height:3px;width:28px;background:white;border-radius:3px;transition:.3s;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+#nav-links.active{display:flex;flex-direction:column;position:absolute;top:65px;right:8%;background:rgba(11,15,26,0.95);padding:20px;border-radius:15px;gap:20px;}
+
+/* ========================= HERO ========================= */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;gap:80px;padding:140px 8% 80px;flex-wrap:wrap;text-align:left;}
+.hero-text{max-width:550px;}
+.hero h2{font-size:3rem;margin-bottom:15px;line-height:1.2;}
+.gradient-text{background:linear-gradient(90deg,#00f0ff,#ff00f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.typing{font-size:1.5rem;color:#00f0ff;margin-top:10px;min-height:40px;}
+.typing::after{content:"|";margin-left:5px;animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* ========================= BUTTONS ========================= */
+.btn{display:inline-block;margin-top:30px;padding:14px 34px;border-radius:40px;font-weight:600;text-decoration:none;color:white;background:linear-gradient(90deg,#00f0ff,#ff00f7);transition:.4s;}
+.btn:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,240,255,0.4);}
+
+/* ========================= SECTIONS ========================= */
+.section{padding:110px 8%;text-align:center;}
+.section-title{font-size:2.3rem;margin-bottom:60px;display:inline-block;padding:10px 30px;border-radius:15px;}
+#skills .section-title{border:2px solid #00f0ff;box-shadow:0 0 25px rgba(0,240,255,0.4);}
+#projects .section-title{border:2px solid #ff00f7;box-shadow:0 0 25px rgba(255,0,247,0.4);}
+
+/* ========================= CARDS ========================= */
+.card-container{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;}
+.card{padding:30px;width:260px;border-radius:25px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(20px);transition:.4s;cursor:pointer;}
+.card:hover{transform:translateY(-12px);box-shadow:0 20px 50px rgba(0,240,255,0.3);}
+
+/* ========================= SOCIAL ICONS ========================= */
+.social{margin-top:35px;display:flex;gap:25px;justify-content:center;}
+.social__icon svg{width:28px;fill:white;transition:.3s;}
+.social__icon:hover svg{fill:#00f0ff;transform:scale(1.3);}
+
+/* ========================= FORM ========================= */
+.form{max-width:750px;margin:auto;}
+.field{display:flex;flex-direction:column;margin-bottom:25px;text-align:left;position:relative;}
+.field input,.field textarea{padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:white;transition:.3s;}
+.field input:focus,.field textarea:focus{border-color:#00f0ff;box-shadow:0 0 15px rgba(0,240,255,0.4);outline:none;}
+
+/* ========================= FOOTER ========================= */
+.footer{text-align:center;padding:40px;background:rgba(255,255,255,0.04);border-top:1px solid rgba(255,255,255,0.08);}
+
+/* ========================= SCROLL REVEAL ========================= */
+.reveal{opacity:0;transform:translateY(80px);transition:1s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+/* ========================= RESPONSIVE ========================= */
+@media(max-width:768px){
+  .hero{flex-direction:column;text-align:center;padding-top:160px;}
+  nav ul{display:none;}
+  .hamburger{display:flex;}
+  .card{width:100%;}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="glow-orb orb1"></div>
+<div class="glow-orb orb2"></div>
+
+<!-- NAV -->
+<header>
+<nav>
+<h1 class="logo">Leul</h1>
+<div class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+<ul id="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="home" class="section hero">
+<div class="hero-text">
+<h2>Hello 👋 I'm <span class="gradient-text">Leul Demesew</span></h2>
+<h3 class="typing"></h3>
+<a href="#projects" class="btn">Explore My Work</a>
+<div class="social">
+<a class="social__icon" href="https://github.com" aria-label="GitHub">GitHub SVG</a>
+<a class="social__icon" href="https://linkedin.com" aria-label="LinkedIn">LinkedIn SVG</a>
+<a class="social__icon" href="https://twitter.com" aria-label="Twitter">Twitter SVG</a>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section reveal">
+<h2 class="section-title">About Me</h2>
+<p>I am a Grade 11 student passionate about web design and development. I love building modern interfaces.</p>
+<p>My goal is to become a professional software engineer.</p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section reveal">
+<h2 class="section-title">Technical Expertise</h2>
+<div class="card-container">
+<div class="card">HTML</div>
+<div class="card">CSS</div>
+<div class="card">Responsive Design</div>
+<div class="card">Animations</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section reveal">
+<h2 class="section-title">Projects</h2>
+<div class="card-container">
+<div class="card project">
+<h3>Shopping Website</h3>
+<p>Modern responsive website using HTML & CSS.</p>
+<a href="https://dansa170.github.io/dansa/" target="_blank">Live Demo</a>
+</div>
+<div class="card project">
+<h3>Blogr Landing Page</h3>
+<p>Responsive landing page challenge.</p>
+<a href="https://dansa170.github.io/blogr/" target="_blank">Live Demo</a>
+</div>
+<div class="card project">
+<h3>News Page</h3>
+<p>Responsive News page challenge.</p>
+<a href="https://dansa170.github.io/blogr/" target="_blank">Live Demo</a>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section reveal">
+<h2 class="section-title">Contact Me</h2>
+<form class="form">
+<label class="field"><span>Full Name</span><input type="text" placeholder="Your Name" required></label>
+<label class="field"><span>Email</span><input type="email" placeholder="you@example.com" required></label>
+<label class="field"><span>Phone</span><input type="tel" placeholder="+251 ..."></label>
+<label class="field"><span>Subject</span><input type="text" placeholder="Project Inquiry"></label>
+<label class="field field--full"><span>Message</span><textarea rows="6" placeholder="Tell me about your project..." required></textarea></label>
+<button class="btn btn--primary" type="submit">Send Message</button>
+</form>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+<p>© 2026 Leul Demesew. All rights reserved</p>
+</footer>
+
+<script>
+// Typing Effect
+const textArray = ["Future Software Engineer 🚀","Creative Web Developer 💻","Building Modern Interfaces ⚡️"];
+let typingElement = document.querySelector(".typing");
+let textIndex = 0;
+let charIndex = 0;
+function typeEffect(){
+  if(charIndex < textArray[textIndex].length){
+    typingElement.textContent += textArray[textIndex].charAt(charIndex);
+    charIndex++;setTimeout(typeEffect,60);
+  } else {setTimeout(eraseEffect,1500);}
+}
+function eraseEffect(){
+  if(charIndex > 0){
+    typingElement.textContent = textArray[textIndex].substring(0,charIndex-1);
+    charIndex--;setTimeout(eraseEffect,40);
+  } else{textIndex++;if(textIndex>=textArray.length)textIndex=0;setTimeout(typeEffect,300);}
+}
+typeEffect();
+
+// Scroll Reveal
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+  reveals.forEach(r=>{
+    const windowHeight=window.innerHeight;
+    const revealTop=r.getBoundingClientRect().top;
+    if(revealTop<windowHeight-100) r.classList.add("active");
+  });
+});
+
+// Hamburger
+function toggleMenu(){
+  document.getElementById("nav-links").classList.toggle("active");
+  document.querySelector(".hamburger").classList.toggle("active");
+}
+</script>
+</body>
+</html>
